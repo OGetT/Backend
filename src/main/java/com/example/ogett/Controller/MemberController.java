@@ -1,47 +1,48 @@
 package com.example.ogett.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class MemberController {
 
-    @GetMapping("/")
+    @RequestMapping("/")
+    //@ResponseBody
     public String home(){
         return "index";
     }
 
-    @GetMapping("/login")
+    @RequestMapping("/login")
     public String login(){
-        return "member/Login";
+        return "member/Login.html";
     }
 
-    @GetMapping("/cart")
+    @RequestMapping("/cart")
     public String cart(){
         return "Cart";
     }
 
-    @GetMapping("/ai")
+    @RequestMapping("/ai")
     public String ai(){
         return "AI";
     }
 
-    @GetMapping("/membership")
+    @RequestMapping("/membership")
     public String membership(){
         return "Membership";
     }
 
-    @GetMapping("/payment")
+    @RequestMapping("/payment")
     public String payment(){
         return "Payment";
     }
 
-    @GetMapping("/product")
+    @RequestMapping("/product")
     public String product(){
         return "Product";
     }
 
-    @GetMapping("/wishlist")
+    @RequestMapping("/wishlist")
     public String wishlist(){
         return "Wishlist";
     }
