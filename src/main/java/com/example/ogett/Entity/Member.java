@@ -19,10 +19,16 @@ public class Member{
 
     @Column(unique = true)
     private String email;
+
     private String name;
+
+    @Column(unique = true)
     private String phoneNum;
+
     private String birthdate;
+
     private String password;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender; // Gender 열거형 타입
