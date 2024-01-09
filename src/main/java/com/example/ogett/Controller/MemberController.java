@@ -7,10 +7,7 @@ import com.example.ogett.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -22,17 +19,17 @@ public class MemberController {
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
-    @GetMapping("/")
+    @RequestMapping("/")
     public String home(){
         return "index";
     }
 
 
-    @GetMapping("/membership")
+    @RequestMapping("/membership")
     public String membership(){
         return "member/Membership";
     }
-    @GetMapping("/login")
+    @RequestMapping("/login")
     public String login(){
         return "member/Login";
     }
@@ -49,7 +46,7 @@ public class MemberController {
         memberService.registerMember(memberDTO);
 
         // 회원가입이 성공하면 index로 리다이렉트
-        return "redirect:/";
+        return "member/MCompletion";
     }
 
     @PostMapping("/login")
@@ -67,28 +64,28 @@ public class MemberController {
             return "redirect:/login";
         }
     }
-    @GetMapping("/cart")
+    @RequestMapping("/cart")
     public String cart(){
         return "Cart";
     }
 
-    @GetMapping("/ai")
+    @RequestMapping("/ai")
     public String ai(){
         return "AI";
     }
 
 
-    @GetMapping("/payment")
+    @RequestMapping("/payment")
     public String payment(){
         return "Payment";
     }
 
-    @GetMapping("/product")
+    @RequestMapping("/product")
     public String product(){
         return "Product";
     }
 
-    @GetMapping("/wishlist")
+    @RequestMapping("/wishlist")
     public String wishlist(){
         return "Wishlist";
     }
