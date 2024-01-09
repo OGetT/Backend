@@ -17,6 +17,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class MemberServiceTest {
@@ -28,8 +29,8 @@ public class MemberServiceTest {
     private MemberRepository memberRepository;
 
     @BeforeEach
-    public void tearUp() {
-        // 모든 테스트 메서드 실행 후에 실행되는 메서드
+    public void setUp() {
+        // 모든 테스트 메서드 실행 전에 실행되는 메서드
         memberRepository.deleteAll();
     }
 
@@ -57,6 +58,7 @@ public class MemberServiceTest {
         // 비밀번호 검증은 일반적으로 해싱 등의 복잡한 로직이 들어가므로 간단한 평문 비밀번호 검증만을 예시로 작성
         assertEquals("password", savedMember.get().getPassword());
     }
+
     @Test
     public void testLoginMember() {
         // Given
@@ -68,14 +70,13 @@ public class MemberServiceTest {
         memberService.registerMember(memberDTO); // 회원 등록
 
         // Then
-        boolean loginResult = memberService.loginMember(memberDTO);
+        boolean loginResult = memberService.loginMemberByIdAndPassword(memberDTO.getEmail(), memberDTO.getPassword());
         assertTrue(loginResult);
     }
+
     @AfterEach
     public void tearDown() {
         // 모든 테스트 메서드 실행 후에 실행되는 메서드
         memberRepository.deleteAll();
     }
-
-
 }

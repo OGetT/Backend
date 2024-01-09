@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+//멤버 데이터베이스  테이블 매핑
+
 @Entity
 @Table(name = "member")
 @Getter @Setter

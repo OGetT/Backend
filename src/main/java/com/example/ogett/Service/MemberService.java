@@ -1,5 +1,4 @@
 package com.example.ogett.Service;
-
 import com.example.ogett.DTO.MemberDTO;
 import com.example.ogett.Entity.Member;
 import com.example.ogett.Repository.MemberRepository;
@@ -28,12 +27,11 @@ public class MemberService {
         member.setGender(memberDTO.getGender());
 
         memberRepository.save(member);
-
     }
 
-    public boolean loginMember(MemberDTO memberDTO) {
-        Optional<Member> memberOptional = memberRepository.findByEmail(memberDTO.getEmail());
+    public boolean loginMemberByIdAndPassword(String memberId, String password) {
+        Optional<Member> memberOptional = memberRepository.findByEmail(memberId);
 
-        return memberOptional.map(member -> member.getPassword().equals(memberDTO.getPassword())).orElse(false);
+        return memberOptional.map(member -> member.getPassword().equals(password)).orElse(false);
     }
 }
