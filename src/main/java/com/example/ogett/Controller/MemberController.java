@@ -46,7 +46,7 @@ public class MemberController {
         memberService.registerMember(memberDTO);
 
         // 회원가입이 성공하면 index로 리다이렉트
-        return "member/MCompletion";
+        return "redirect:/";
     }
 
     @PostMapping("/login")
