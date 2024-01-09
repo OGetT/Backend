@@ -32,10 +32,10 @@ public class MemberController {
         return "member/Membership";
     }
 
-//    @PostMapping("/login")
-//    public String Clogin(){
-//        return "index";
-//    }
+    @PostMapping("/membership")
+    public String Cmembership(){
+        return "index";
+    }
 //    @PostMapping("/login")
 //    public String saveUser(Member member) {
 //        memberRepository.save(member);
