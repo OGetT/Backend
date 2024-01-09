@@ -26,9 +26,9 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
   <!-- 스타일 파일 연결-->
-  <link href="../static/css/style.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
   <!-- 반응형 스타일 파일 연결-->
-  <link href="../static/css/style.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -51,28 +51,21 @@
 
   <!-- 로그인 -->
   <div class="Mem">
-    <h2>로그인</h2>
+    <h2>ID 찾기</h2>
     <div class="MemSet">
-      <label for="username">ID </label>
+      <label for="username">이름 </label>
       <input type="text" id="username" name="username">
       <div class="MS"></div>
-      <label for="password">PW </label>
+      <label for="password">전화번호 </label>
       <input type="password" id="password" name="password">
+      <button type="button" id="checkUsername"> 인증번호 받기 </button>
       <div class="MS"></div>
+      <label for="password">인증번호 </label>
+      <input type="password" id="password" name="password">
     </div>
-    <input type="checkbox" id="myCheckbox">
-    <label for="myCheckbox">아이디 저장</label>
-    <input type="checkbox" id="myCheckbox">
-    <label for="myCheckbox">자동로그인</label>
-  </div>
-  <div class="SS"></div>
-  <div class="info">
-    <a href="Membership.html">회원가입</a></p>
-    <a href="FindID.html">아이디찾기</a></p>
-    <a href="FindPassword.html">비밀번호찾기</a></p>
   </div>
   <div class="btn">
-    <button type="button" id="cancelButton">로그인</button>
+    <button type="button" id="cancelButton">이메일로 보내기</button>
   </div>
   <div class="SS"></div>
 </body>

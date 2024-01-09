@@ -27,6 +27,10 @@ public class MemberController {
     public String login(){
         return "member/Login";
     }
+    @GetMapping("/membership")
+    public String membership(){
+        return "member/Membership";
+    }
 
 //    @PostMapping("/login")
 //    public String Clogin(){
@@ -47,10 +51,6 @@ public class MemberController {
         return "AI";
     }
 
-    @GetMapping("/membership")
-    public String membership(){
-        return "Membership";
-    }
 
     @GetMapping("/payment")
     public String payment(){
