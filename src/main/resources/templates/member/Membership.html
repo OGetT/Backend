@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Site Metas -->
+  <!-- 검색 엔진에 사이트가 뜨는 키워드 -->
+  <meta name="keywords" content="" />
+  <!-- 사이트에 대한 간단한 설명 -->
+  <meta name="description" content="" />
+  <!-- 사이트에 대한 저자 -->
+  <meta name="author" content="" />
+  <!-- 사이트 아이콘 -->
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>GreenShop</title>
+  <link rel="stylesheet" type="text/css" href="css/GreenShop.css">
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- 스타일 파일 연결-->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- 반응형 스타일 파일 연결-->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <header class="header_section">
+      <!-- 네비게이션 정의 -->
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <!-- 로고 클릭시 index로 이동 -->
+        <a class="navbar-brand" href="index.html">
+          <span>
+            GreenShop
+          </span>
+        </a>
+        <!-- 상단 바 -->
+        <div class="banner">
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <!-- 회원가입 -->
+  <form action="/membership" method="post">
+    <div class="Mem">
+
+      <h2>회원가입</h2>
+
+      <div class="MemSet">
+        <label for="username">ID 입력 </label>
+        <input type="text" id="username" name="username">
+        <!-- <button type="button" id="checkUsername"> 중복 확인 </button> -->
+        <!-- <div class="SS"></div> -->
+        <label for="password">비밀번호 입력</label>
+        <input type="password" id="password" name="password">
+        <div class="MS"></div>
+        <!-- <label for="password">비밀번호 확인 </label> -->
+        <!-- <input type="password" id="passwordConfirm" name="passwordConfirm"> -->
+        <!-- <div class="SS"></div> -->
+        <label for="email">이메일 </label>
+        <input type="text" id="email" name="email">
+        <div class="MS"></div>
+        <!-- <label for="emailConfirm">이메일 확인 </label> -->
+        <!-- <input type="text" id="emailConfirm" name="emailConfirm"> -->
+        <!-- <div class="SS"></div> -->
+        <label for="name">이름 </label>
+        <input type="text" id="name" name="name">
+        <div class="MS"></div>
+        <label for="birthdate">생년월일 (6자리) </label>
+        <input type="text" id="birthdate" name="birthdate">
+        <div class="SS"></div>
+        <label for="password">성별 선택</label>
+        <div>
+          <label>
+            <input type="radio" name="gender" value="male">
+            남자
+          </label>
+
+          <label>
+            <input type="radio" name="gender" value="female">
+            여자
+          </label>
+
+          <label>
+            <input type="radio" name="gender" value="other">
+            선택안함
+          </label>
+        </div>
+        <div class="SS"></div>
+        <label for="phone">전화번호</label>
+        <input type="text" id="phone" name="phone">
+        <div class="MS"></div>
+        <!-- <label for="phoneConfirm">전화번호 확인 </label> -->
+        <!-- <input type="text" id="phoneConfirm" name="phoneConfirm"> -->
+      </div>
+    </div>
+    <div class="SS"></div>
+    <div class="btn">
+      <button type="button" id="cancelButton">취소</button>
+      <button type="submit" id="submitButton">회원가입</button>
+    </div>
+
+    <div class="SS"></div>
+  </form>
+</body>
+
+</html>

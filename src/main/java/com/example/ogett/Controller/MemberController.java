@@ -27,11 +27,15 @@ public class MemberController {
     public String login(){
         return "member/Login";
     }
+    @GetMapping("/membership")
+    public String membership(){
+        return "member/Membership";
+    }
 
-//    @PostMapping("/login")
-//    public String Clogin(){
-//        return "index";
-//    }
+    @PostMapping("/membership")
+    public String Cmembership(){
+        return "index";
+    }
 //    @PostMapping("/login")
 //    public String saveUser(Member member) {
 //        memberRepository.save(member);
@@ -47,10 +51,6 @@ public class MemberController {
         return "AI";
     }
 
-    @GetMapping("/membership")
-    public String membership(){
-        return "Membership";
-    }
 
     @GetMapping("/payment")
     public String payment(){
