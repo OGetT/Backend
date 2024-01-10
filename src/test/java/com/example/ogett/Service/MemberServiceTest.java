@@ -1,10 +1,8 @@
 package com.example.ogett.Service;
 
-import com.example.ogett.Constant.Gender;
 import com.example.ogett.DTO.MemberDTO;
 import com.example.ogett.Entity.Member;
 import com.example.ogett.Repository.MemberRepository;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,7 +41,7 @@ public class MemberServiceTest {
         memberDTO.setPhoneNum("1234567890");
         memberDTO.setBirthdate("1990-01-01");
         memberDTO.setPassword("password");
-        memberDTO.setGender(Gender.MALE);
+        memberDTO.setGender("male");
 
         // When
         memberService.registerMember(memberDTO);

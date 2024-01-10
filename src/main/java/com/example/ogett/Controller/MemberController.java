@@ -41,10 +41,12 @@ public class MemberController {
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setEmail(formData.getFirst("email"));
         memberDTO.setName(formData.getFirst("name"));
-        memberDTO.setPhoneNum(formData.getFirst("phoneNum"));
+        memberDTO.setPhoneNum(formData.getFirst("phone"));
         memberDTO.setBirthdate(formData.getFirst("birthdate"));
         memberDTO.setPassword(formData.getFirst("password"));
+        memberDTO.setGender(formData.getFirst("gender"));
 
+        // 추가적인 validation 로직을 넣을 수 있음
 
         memberService.registerMember(memberDTO);
 
