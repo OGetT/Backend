@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 public class MemberService {
 
@@ -20,7 +22,7 @@ public class MemberService {
 
     public void registerMember(MemberDTO memberDTO) {
         Member member = new Member();
-        member.setId(memberDTO.getId());
+        member.setUsername(memberDTO.getUsername());
         member.setEmail(memberDTO.getEmail());
         member.setName(memberDTO.getName());
         member.setPhoneNum(String.valueOf(memberDTO.getPhoneNum()));
@@ -32,9 +34,9 @@ public class MemberService {
 
         memberRepository.save(member);
     }
-    public boolean loginMemberByIdAndPassword(String memberId, String password) {
-        Optional<Member> memberOptional = memberRepository.findByEmail(memberId);
 
+    public boolean loginMemberByIdAndPassword(String username, String password) {
+        Optional<Member> memberOptional = memberRepository.findByUsername(username);
         return memberOptional.map(member -> member.getPassword().equals(password)).orElse(false);
     }
 }

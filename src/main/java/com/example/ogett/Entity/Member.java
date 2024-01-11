@@ -18,6 +18,8 @@ public class Member {
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "id",unique = true)
+    private String username;
 
     @Column(unique = true)
     private String email;

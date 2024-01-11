@@ -11,6 +11,8 @@ import lombok.ToString;
 public class MemberDTO {
 
     private Long id;
+
+    private String username;
     private String email;
     private String name;
     private String phoneNum;
