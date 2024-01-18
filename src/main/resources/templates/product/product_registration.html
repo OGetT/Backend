@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 필요한 메타 태그와 스타일 시트를 추가 -->
+    <title>상품 등록</title>
+</head>
+<body>
+    <h1>상품 등록</h1>
+    <form id="product-form">
+        <label for="product-image">사진:</label>
+        <input type="file" id="product-image" name="image">
+        
+        <label for="product-name">이름:</label>
+        <input type="text" id="product-name" name="name">
+        
+        <label for="product-price">가격:</label>
+        <input type="number" id="product-price" name="price">
+        
+        <label for="product-category">옷 종류:</label>
+        <input type="text" id="product-category" name="category">
+        
+        <button type="submit">등록</button>
+    </form>
+</body>
+<script src="product_registration.js"></script>
+</html>
