@@ -1,8 +1,6 @@
 package com.example.ogett.Controller;
 
 import com.example.ogett.DTO.MemberDTO;
-import com.example.ogett.Entity.Member;
-import com.example.ogett.Repository.MemberRepository;
 import com.example.ogett.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,11 +76,6 @@ public class MemberController {
     @RequestMapping("/payment")
     public String payment(){
         return "Payment";
-    }
-
-    @RequestMapping("/product")
-    public String product(){
-        return "Product";
     }
 
     @RequestMapping("/wishlist")
