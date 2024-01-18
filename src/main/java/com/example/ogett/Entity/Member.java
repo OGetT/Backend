@@ -1,6 +1,5 @@
 package com.example.ogett.Entity;
 
-import com.example.ogett.Constant.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,14 +9,17 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "member")
-@Getter @Setter
+@Getter
+@Setter
 @ToString
-public class Member{
+public class Member {
 
     @Id
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "id",unique = true)
+    private String username;
 
     @Column(unique = true)
     private String email;
@@ -31,7 +33,20 @@ public class Member{
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
-    private Gender gender; // Gender 열거형 타입
+    private String gender;
+
+    // 생성자
+    public Member(String email, String name, String phoneNum, String birthdate, String password, String gender) {
+        this.email = email;
+        this.name = name;
+        this.phoneNum = phoneNum;
+        this.birthdate = birthdate;
+        this.password = password;
+        this.gender = gender;
+    }
+
+    // 기본 생성자
+    public Member() {
+    }
 }
