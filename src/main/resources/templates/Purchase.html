@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- 기타 메타 태그 및 스타일 시트 연결 등 -->
+  <title>주문하기</title>
+  <script src="purchase.js"></script>
+</head>
+
+<body>
+  <h1>상품 주문</h1>
+  <form id="order-form">
+    <label for="product-select">상품 선택:</label>
+    <select id="product-select" name="product">
+      <!-- 여기에 상품 목록을 추가하세요 -->
+      <option value="product1">상품 1</option>
+      <option value="product2">상품 2</option>
+      <option value="product3">상품 3</option>
+    </select>
+  
+    <label for="quantity">수량:</label>
+    <input type="number" id="quantity" name="quantity" min="1" value="1">
+  
+    <!-- 배송 정보 입력란 추가 가능 -->
+  
+    <!-- 결제 정보 입력란 추가 가능 -->
+  
+    <button type="submit">주문하기</button>
+  </form>
+  
+  <h2>주문 내역 조회</h2>
+  <!-- 주문 내역을 여기에 표시하세요. -->
+  
+  <h2>주문 취소</h2>
+  <form id="cancel-form">
+    <label for="order-number">주문 번호:</label>
+    <input type="text" id="order-number" name="orderNumber">
+  
+    <label for="reason">취소 사유:</label>
+    <textarea id="reason" name="cancelReason" rows="4"></textarea>
+  
+    <button type="submit">주문 취소</button>
+  </form>
+
+
+  <script src="purchase.js"></script>  <!-- 필요한 스크립트를 연결하세요. -->
+</body>
