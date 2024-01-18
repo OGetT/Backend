@@ -23,15 +23,15 @@ public class MemberController {
     }
 
 
-    @RequestMapping("/membership")
+    @RequestMapping("Membership.html")
     public String membership(){
         return "member/Membership";
     }
-    @RequestMapping("/login")
+    @RequestMapping("/Login.html")
     public String login(){
         return "member/Login";
     }
-    @PostMapping("/membership")
+    @PostMapping("/Membership.html")
     public String saveMember(@RequestParam MultiValueMap<String, String> formData) {
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setEmail(formData.getFirst("email"));
