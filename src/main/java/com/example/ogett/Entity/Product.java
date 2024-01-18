@@ -17,20 +17,18 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 바이트 배열로 수정
+    // imageData의 목적을 설명하는 주석 수정
+    // imageData에 이진 데이터(이미지 등)를 저장하기 위해 byte[] 사용
     @Lob
     @Column(name = "image_data", columnDefinition = "BLOB")
     private byte[] imageData;
 
-
+    // 속성 목적을 설명하는 주석 추가
     private String name;
-
     private String price;
-
     private String type;
 
-
-    // 생성자
+    // 주어진 값으로 Product 엔터티를 초기화하는 생성자
     public Product(byte[] imageData, String name, String price, String type) {
         this.imageData = imageData;
         this.name = name;
@@ -38,11 +36,7 @@ public class Product {
         this.type = type;
     }
 
-    // 기본 생성자
+    // JPA에서 필요한 기본 생성자
     public Product() {
     }
-
-
-
 }
-

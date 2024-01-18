@@ -1,54 +1,36 @@
 package com.example.ogett.Controller;
 
-import com.example.ogett.DTO.MemberDTO;
 import com.example.ogett.DTO.ProductDTO;
-import com.example.ogett.Service.MemberService;
 import com.example.ogett.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Base64;
-
 @Controller
+@RequestMapping("/products")
 public class ProductController {
-    @Autowired
-    private ProductService productService;
+
+    private final ProductService productService;
 
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
-    @RequestMapping("/product")
-    public String product(){
-        return "product/Product";
+    // 상품 등록 폼을 보여주는 메서드
+    @RequestMapping("/new")
+    public String showProductForm() {
+        return "Product.html"; // ProductForm.html로 이동
     }
 
-    @RequestMapping("/productRegistration") //상품 등록 페이지
-    public String productRegistration(){
-        return "product/ProductRegistration";
-    }
-    public String saveProduct(@RequestParam MultiValueMap<String, String> formData) {
-        ProductDTO productDTO = new ProductDTO();
-        
-        // Base64 디코딩을 통해 문자열을 byte[]로 변환
-        byte[] imageData = Base64.getDecoder().decode(formData.getFirst("imageData"));
-
-        productDTO.setName(formData.getFirst("name"));
-        productDTO.setPrice(formData.getFirst("price"));
-        productDTO.setType(formData.getFirst("type"));
+    // 상품 등록을 처리하는 메서드
+    @PostMapping("/register")
+    public String registerProduct(@RequestBody ProductDTO productDTO) {
+        // ProductService의 registerProduct 메서드 호출
         productService.registerProduct(productDTO);
 
-        // 상품등록이 성공하면 index로 리다이렉트
-        return "redirect:/";
+        // 등록이 성공하면 Product.html로 리다이렉트
+        return "redirect:/products/Product";
     }
-
-    @RequestMapping("/cart") //장바구니 페이지
-    public String cart(){
-        return "product/Cart";
-    }
-
 }
