@@ -62,27 +62,5 @@ public class MemberController {
             return "redirect:/login";
         }
     }
-    @RequestMapping("/cart")
-    public String cart(){
-        return "Cart";
-    }
-
-    @RequestMapping("/ai")
-    public String ai(){
-        return "AI";
-    }
-
-
-    @RequestMapping("/payment")
-    public String payment(){
-        return "Payment";
-    }
-
-    @RequestMapping("/wishlist")
-    public String wishlist(){
-        return "Wishlist";
-    }
-
-
 
 }

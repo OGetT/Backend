@@ -7,7 +7,7 @@ const registaration = () => {
   return (
     <footer style="display: flex; justify-content: flex-end;">
       <div class="btn-purchase" style="margin-right: 10px;">
-        <a href="Purchase.html">
+        <a href="product/Purchase.html">
           <img src={PurchaseIcon} alt="purchase" width="50" height="50" />
         </a>
       </div>
