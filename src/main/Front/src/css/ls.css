@@ -1,0 +1,70 @@
+/* 로그인 & 회원가입 */
+.SS {
+  display: flex;
+  padding: 30px;
+}
+
+.Mem {
+  margin-top: 100px;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  border: 2px solid #d9ce94;
+  border-radius: 10px;
+  padding: 30px;
+  padding-left: 100px;
+  padding-bottom: 100px;
+}
+
+.Mem h2 {
+  padding-top: 80px;
+  font-family: 'Noto-B';
+  color: #305440;
+  padding-bottom: 80px;
+}
+
+.Mem .MemSet {
+  padding-left: 40px;
+}
+
+.Mem .MemSet button {
+  margin-left: 10px;
+}
+
+.Mem .MemSet .MS {
+  padding-top: 20px;
+}
+
+form {
+  display: flex;
+  margin-top: 20px;
+}
+
+
+form input[type="radio"] {
+  margin-left: 50px;
+  margin-right: 5px;
+}
+
+.info {
+  margin-top: -30px;
+  display: flex;
+  justify-content: center;
+}
+
+.info a {
+  margin-left: 30px;
+}
+
+.BtnI {
+  display: flex;
+  margin: 10px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.BtnI button {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+}

@@ -1,0 +1,32 @@
+/* 상품 등록 아이콘 */
+
+.picon-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: flex-end;
+  list-style: none;
+  justify-content: flex-end;
+  height: 100vh;
+  /* 뷰포트 높이로 설정 */
+}
+
+.picon li {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: relative;
+  flex-direction: column;
+}
+
+.picon li strong {
+  display: block;
+  padding: 10px 0 0 0;
+  font-family: 'Noto-R';
+  position: relative;
+  color: #305440;
+  bottom: 5px;
+}
