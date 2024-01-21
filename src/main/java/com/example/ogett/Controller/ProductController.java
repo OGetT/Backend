@@ -18,19 +18,14 @@ public class ProductController {
         this.productService = productService;
     }
 
-    // 상품 등록 폼을 보여주는 메서드
     @RequestMapping("/new")
     public String showProductForm() {
-        return "Product.html"; // ProductForm.html로 이동
+        return "Product.html";
     }
 
-    // 상품 등록을 처리하는 메서드
     @PostMapping("/register")
     public String registerProduct(@RequestBody ProductDTO productDTO) {
-        // ProductService의 registerProduct 메서드 호출
         productService.registerProduct(productDTO);
-
-        // 등록이 성공하면 Product.html로 리다이렉트
-        return "redirect:/products/Product";
+        return "redirect:/products/new"; // 리다이렉트 URL 업데이트
     }
 }
