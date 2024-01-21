@@ -1,31 +1,22 @@
 package com.example.ogett.DTO;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 // 필요한 import 구문 추가
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO {
 
     private byte[] imageData;
     private String name;
-
-    // price 필드의 타입을 double로 변경
     private double price;
-
     private String type;
-
-    public ProductDTO() {
-    }
-
-    public ProductDTO(byte[] imageData, String name, double price, String type) {
-        this.imageData = imageData;
-        this.name = name;
-        this.price = price;
-        this.type = type;
-    }
+    private String description;
+    private String author;
 }
