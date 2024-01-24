@@ -9,28 +9,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/products")
 public class ProductController {
 
+    @Autowired
     private final ProductService productService;
 
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
+
     @GetMapping("/product_registration")
-    public String showProductRegistrationForm() {
-        return "product_registration";
-    }
-
-
-    @GetMapping("/new")
-    public String showProductForm() {
-        return "forward:/Product_registration.html";
+    public String ProductRegistration() {
+        return "/product/product_registration";
     }
 
     @PostMapping("/register")
