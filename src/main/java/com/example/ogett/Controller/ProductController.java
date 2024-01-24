@@ -22,19 +22,24 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
+    @GetMapping("/product_registration")
+    public String showProductRegistrationForm() {
+        return "product_registration";
+    }
+
 
     @GetMapping("/new")
     public String showProductForm() {
-        return "Product";
+        return "forward:/Product_registration.html";
     }
 
     @PostMapping("/register")
-    public String registerProduct(@RequestParam("product-image") MultipartFile image,
-                                  @RequestParam("product-name") String name,
-                                  @RequestParam("product-price") double price,
-                                  @RequestParam("product-category") String category,
-                                  @RequestParam("product-description") String description,
-                                  @RequestParam("product-author") String author) throws IOException {
+    public String registerProduct(@RequestParam("image") MultipartFile image,
+                                  @RequestParam("name") String name,
+                                  @RequestParam("price") double price,
+                                  @RequestParam("category") String category,
+                                  @RequestParam("description") String description,
+                                  @RequestParam("author") String author) throws IOException {
         // MultipartFile을 byte[]로 변환
         byte[] imageData = image.getBytes();
 
@@ -44,6 +49,7 @@ public class ProductController {
         // ProductService를 통해 상품 등록
         productService.registerProduct(productDTO);
 
+        // 등록 후 다시 상품 등록 페이지로 이동
         return "redirect:/products/new";
     }
 }
