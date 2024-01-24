@@ -19,7 +19,7 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/index.html")
     public String home() {
         return "index";
     }
@@ -29,7 +29,7 @@ public class MemberController {
         return "member/Membership";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/Login")
     public String login() {
         return "member/Login";
     }
