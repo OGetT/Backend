@@ -28,13 +28,13 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
-    public String showAllProducts(Model model) {
-        // 모든 제품을 가져와서 모델에 추가
-        List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
-        return "/";
-    }
+//    @GetMapping("/")
+//    public String showAllProducts(Model model) {
+//        // 모든 제품을 가져와서 모델에 추가
+//        List<Product> products = productService.getAllProducts();
+//        model.addAttribute("products", products);
+//        return "home";
+//    }
 
     @GetMapping("/product_registration")
     public String ProductRegistration() {
