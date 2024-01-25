@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.57c3ca39.css",
+    "main.js": "/static/js/main.466c5946.js",
+    "static/media/dattebayo.ttf": "/static/media/dattebayo.0f3c67287da4cdafc3fd.ttf",
+    "static/media/truck.svg": "/static/media/truck.0e781b7758b50278404b04ddeb66942c.svg",
+    "static/media/ai.svg": "/static/media/ai.e0dbf9c8d26cea1b21a8a4832259264a.svg",
+    "index.html": "/index.html",
+    "static/media/lPerson.svg": "/static/media/lPerson.418251d9ab6112aee7c5756a65146d75.svg",
+    "static/media/search.svg": "/static/media/search.61b59328282eaac10dc2437b7e577406.svg",
+    "static/media/person.svg": "/static/media/person.7e90bbc0b05bc852557a9ef086a0cf73.svg",
+    "static/media/wishlist.svg": "/static/media/wishlist.8209a75dead3a252f881921fc1874cb0.svg",
+    "static/media/shopcart.svg": "/static/media/shopcart.a8df5b85bcf4f0e1aa99a9eeb84180d1.svg",
+    "static/media/purchase.svg": "/static/media/purchase.05226072644218c44d028c199ffb026a.svg",
+    "main.57c3ca39.css.map": "/static/css/main.57c3ca39.css.map",
+    "main.466c5946.js.map": "/static/js/main.466c5946.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57c3ca39.css",
+    "static/js/main.466c5946.js"
+  ]
+}

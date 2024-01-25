@@ -6,21 +6,28 @@
 </head>
 <body>
     <h1>상품 등록</h1>
-    <form id="product-form">
+    <form id="product-form" method="post" action="/register">
         <label for="product-image">사진:</label>
         <input type="file" id="product-image" name="image">
 
-        <label for="product-name">이름:</label>
+        <label for="product-name">제품 이름:</label>
         <input type="text" id="product-name" name="name">
 
         <label for="product-price">가격:</label>
-        <input type="number" id="product-price" name="price">
+        <input type="text" id="product-price" name="price">
 
         <label for="product-category">옷 종류:</label>
-        <input type="text" id="product-category" name="category">
+        <input type="text" id="product-category" name="type">
+
+        <label for="product-category">제품 설명:</label>
+        <input type="text" id="product-description" name="description">
+
+        <label for="product-category">작성자:</label>
+        <input type="text" id="product-author" name="author">
+
 
         <button type="submit">등록</button>
     </form>
 </body>
-<script src="product_registration.js"></script>
+<!--<script src="product_registrationnn.js"></script>-->
 </html>
