@@ -16,7 +16,7 @@ public class Product {
     private Long id;
 
     @Lob
-    @Column(name = "image_data", columnDefinition = "BLOB")
+    @Column(name = "image_data", columnDefinition = "LONGBLOB")
     private byte[] imageData;
 
     private String name;
