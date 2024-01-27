@@ -1,11 +1,13 @@
 package com.example.ogett.Controller;
 
+import com.example.ogett.DTO.MemberDTO;
 import com.example.ogett.DTO.ProductDTO;
 import com.example.ogett.Entity.Product;
 import com.example.ogett.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,18 +43,26 @@ public class ProductController {
         return "/product/product_registration";
     }
 
-    @PostMapping("/register")
-    public String registerProduct(@RequestParam("image") MultipartFile image,
-                                  @RequestParam("name") String name,
-                                  @RequestParam("price") double price,
-                                  @RequestParam("category") String category,
-                                  @RequestParam("type") String type,
-                                  @RequestParam("author") String author) throws IOException {
+
+    @PostMapping("/product_registration")
+    public String saveProduct(@RequestParam("image") MultipartFile image,
+                              @RequestParam("name") String name,
+                              @RequestParam("price") String price,
+                              @RequestParam("type") String type,
+                              @RequestParam("author") String author,
+                              @RequestParam("description") String description) throws IOException {
+
         // MultipartFile을 byte[]로 변환
         byte[] imageData = image.getBytes();
 
         // ProductDTO 생성 및 데이터 설정
-        ProductDTO productDTO = new ProductDTO(imageData, name, price, category, type, author);
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setImageData(imageData);
+        productDTO.setName(name);
+        productDTO.setPrice(Double.parseDouble(price));
+        productDTO.setType(type);
+        productDTO.setAuthor(author);
+        productDTO.setDescription(description);
 
         // ProductService를 통해 상품 등록
         productService.registerProduct(productDTO);
@@ -60,4 +70,5 @@ public class ProductController {
         // 등록 완료 시 홈 화면으로 이동
         return "redirect:/";
     }
+
 }

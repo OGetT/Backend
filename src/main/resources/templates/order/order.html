@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="container mx-auto mt-10 p-5 border rounded shadow-lg bg-white">
+        <h2 class="text-2xl font-bold mb-5">주문 내역 조회</h2>
+        <button onclick="fetchOrders()">주문 내역 조회</button>
+        <ul>
+            <!-- 주문 내역 목록 -->
+            <!-- TODO: 서버에서 동적으로 생성되는 주문 내역을 반복해서 출력해야 함 -->
+            <!-- {orders.map(order => (
+              <li key={order.id} class="flex justify-between items-center mb-3">
+                <img src={order.image} alt={order.name} style="width: 50px; height: 50px;" />
+                <span>{order.name} - {order.price}원 - {order.type} - {order.description} - 작성자: {order.author} - 상태: {order.status}</span>
+                <button onclick={() => handleCancelOrder(order.id)}>주문 취소</button>
+              </li>
+            ))} -->
+        </ul>
+    </div>
+
+</body>
+</html>

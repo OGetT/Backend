@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container mx-auto mt-10 p-5 border rounded shadow-lg bg-white">
+    <h2 class="text-2xl font-bold mb-5">장바구니</h2>
+    <ul>
+        <!-- 장바구니 아이템 목록 -->
+        <!-- TODO: 서버에서 동적으로 생성되는 아이템을 반복해서 출력해야 함 -->
+        <!-- {cartItems.map(item => (
+          <li key={item.id} class="flex justify-between items-center mb-3">
+            <img src={item.image} alt={item.name} style="width: 50px; height: 50px;" />
+            <span>{item.name} - {item.price}원 - {item.description}</span>
+            <button onclick={() => handleRemoveItem(item.id)}>삭제</button>
+          </li>
+        ))} -->
+    </ul>
+    <button class="bg-blue-500 text-white py-2 px-4 rounded" onclick={handleOrder}>
+        주문하기
+    </button>
+</div>
+
+
+
+
+</body>
+</html>
+
+

@@ -21,14 +21,15 @@ public class ProductService {
 
     public void registerProduct(ProductDTO productDTO) {
         // Product 엔터티 생성
-        Product product = new Product(
-                productDTO.getImageData(),
-                productDTO.getName(),
-                productDTO.getPrice(),
-                productDTO.getType(),
-                productDTO.getDescription(),
-                productDTO.getAuthor()
-        );
+        Product product = new Product();
+
+        product.setImageData(productDTO.getImageData());
+        product.setName(productDTO.getName());
+        product.setPrice(productDTO.getPrice());
+        product.setType(productDTO.getType());
+        product.setDescription(productDTO.getDescription());
+        product.setAuthor(productDTO.getAuthor());
+
 
         // 레포지토리를 사용하여 제품 엔터티를 데이터베이스에 저장
         productRepository.save(product);
