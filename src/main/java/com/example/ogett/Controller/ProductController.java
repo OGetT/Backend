@@ -75,7 +75,17 @@ public class ProductController {
         model.addAttribute("product", product);
         return "/product/productDetail";
     }
+    @GetMapping("/searchResult")
+    public String searchProducts(@RequestParam String keyword, Model model) {
+        List<ProductDTO> searchResults = productService.searchProducts(keyword);
+        model.addAttribute("products", searchResults);
+        return "SearchResult";
+    }
 
+@GetMapping("/product")
+    public  String productView(){
+        return "/product/Product";
+}
 
 
 }

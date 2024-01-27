@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+    <!-- 부트스트랩 링크 추가 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy8XrmsekY9lMbe5xQF7q9R6h1MZBYsIb" crossorigin="anonymous">
+    <!-- 추가적인 스타일링이나 스크립트 필요 시 추가 -->
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Search Result</h2>
+
+    <!-- 검색 결과를 동적으로 추가할 영역 -->
+    <div id="searchResults"></div>
+</div>
+
+<!-- 검색 스크립트 추가 -->
+<script>
+    // 검색어를 받아 검색 결과를 동적으로 생성하는 함수
+    function searchProducts() {
+        var searchInput = document.getElementById("searchInput");
+        var keyword = searchInput.value;
+
+        // 검색어가 있다면 검색 결과를 동적으로 생성
+        if (keyword) {
+            // 검색 결과 데이터
+            var products = [
+                {
+                    name: "Product A",
+                    description: "Description A",
+                    price: 100,
+                    imageData: "base64_encoded_image_data_A"
+                },
+                {
+                    name: "Product B",
+                    description: "Description B",
+                    price: 150,
+                    imageData: "base64_encoded_image_data_B"
+                },
+                // 추가적인 상품 데이터
+            ];
+
+            // 검색 결과를 동적으로 화면에 추가하는 코드
+            var searchResultsContainer = document.getElementById("searchResults");
+            products.forEach(function (product) {
+                var card = createProductCard(product);
+                searchResultsContainer.appendChild(card);
+            });
+        }
+    }
+
+    // 검색 결과를 카드 형식으로 생성하는 함수
+    function createProductCard(product) {
+        var card = document.createElement("div");
+        card.className = "card mb-3";
+
+        var row = document.createElement("div");
+        row.className = "row no-gutters";
+
+        var imageCol = document.createElement("div");
+        imageCol.className = "col-md-4";
+
+        var image = document.createElement("img");
+        image.className = "card-img";
+        image.src = "data:image/png;base64," + product.imageData;
+        image.alt = "Product Image";
+
+        imageCol.appendChild(image);
+
+        var contentCol = document.createElement("div");
+        contentCol.className = "col-md-8";
+
+        var body = document.createElement("div");
+        body.className = "card-body";
+
+        var title = document.createElement("h5");
+        title.className = "card-title";
+        title.textContent = product.name;
+
+        var description = document.createElement("p");
+        description.className = "card-text";
+        description.textContent = product.description;
+
+        var price = document.createElement("p");
+        price.className = "card-text";
+        price.textContent = "Price: " + product.price;
+
+        // 다른 필요한 정보들을 추가
+
+        body.appendChild(title);
+        body.appendChild(description);
+        body.appendChild(price);
+
+        contentCol.appendChild(body);
+
+        row.appendChild(imageCol);
+        row.appendChild(contentCol);
+
+        card.appendChild(row);
+
+        return card;
+    }
+</script>
+
+</body>
+</html>

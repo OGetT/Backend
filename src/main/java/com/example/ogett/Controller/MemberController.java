@@ -20,14 +20,6 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @GetMapping("/")
-    public String redirectToHome() {
-        return "redirect:/index.html";
-    }
-    @GetMapping("/index.html")
-    public String home() {
-        return "index";
-    }
 
     @GetMapping("/membership")
     public String membership() {
