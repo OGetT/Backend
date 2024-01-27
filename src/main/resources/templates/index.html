@@ -206,18 +206,20 @@
         </div>
       </li>
 
-      <li class="newItem">
+      <li class="newItem" style="height: 482px;">
         <!-- 상품 목록을 출력할 영역 -->
-        <div id="product-list">
+        <div class="product-list">
           <!--상품 등록 시 상품 카드에 내용 추가-->
-          <tr th:each="product : ${products}">
-            <td><img th:src="@{'/images/' + ${product.imageFileName}}" alt="상품 이미지" width="50"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.price}"></td>
-            <td th:text="${product.type}"></td>
-            <td th:text="${product.description}"></td>
-            <td th:text="${product.author}"></td>
-          </tr>
+          <div th:each="product : ${products}">
+            <div class="product-card">
+              <img th:src="@{'/images/' + ${product.imageFileName}}" alt="상품 이미지" style="width:326px; height: 90px;"  >
+              <span th:text="${product.name}"></span>
+              <span th:text="${product.price}"></span>
+              <span th:text="${product.type}"></span>
+              <span th:text="${product.description}"></span>
+              <span th:text="${product.author}"></span>
+            </div>
+          </div>
         </div>
 
         <!-- 상품 목록을 JavaScript로 생성하여 스크립트에 포함 -->
