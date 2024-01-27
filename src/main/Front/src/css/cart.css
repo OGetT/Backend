@@ -1,0 +1,49 @@
+/* 장바구니 */
+
+.cart {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.cart h2 {
+  display: block;
+  width: 80%;
+  position: absolute;
+  justify-content: flex-end;
+  display: block;
+  padding-top: 150px;
+  min-height: 60px;
+  font-family: 'Noto-B';
+  font-size: 40px;
+  color: #305440;
+  text-align: center;
+}
+
+.cart .step {
+  margin: -12px 0 72px 0;
+  font-size: 0;
+  text-align: center;
+  background-position: 0 0;
+}
+
+.cart .step li {
+  display: inline-block;
+  width: 114px;
+  height: 114px;
+  text-align: left;
+  text-indent: -9999px;
+  /* background: url(../img/sub/cart/cart_step.png) no-repeat 0 100%; */
+}
+
+.cart .left {
+  width: 820px;
+}
+
+.cart .left col {
+  display: table-column;
+}
+
+.cart .order-list .table-basic {
+  margin: 0 0 22px 0;
+}
