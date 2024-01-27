@@ -205,7 +205,67 @@
           </div>
         </div>
       </li>
+
+      <li class="newItem">
+        <!-- 상품 목록을 출력할 영역 -->
+        <div id="product-list">
+          <!--상품 등록 시 상품 카드에 내용 추가-->
+          <tr th:each="product : ${products}">
+            <td><img th:src="@{'/images/' + ${product.imageFileName}}" alt="상품 이미지" width="50"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.type}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.author}"></td>
+          </tr>
+        </div>
+
+        <!-- 상품 목록을 JavaScript로 생성하여 스크립트에 포함 -->
+        <script th:inline="javascript">
+          var savedProducts = /*[[${products}]]*/ [];
+        </script>
+
+        <script>
+          // JavaScript를 사용하여 상품 목록을 동적으로 추가하는 함수
+          function addProductToPage(product) {
+            var productListDiv = document.getElementById("product-list");
+
+            // 새로운 상품 카드 추가
+            var newProductCard = document.createElement("li");
+            newProductCard.onclick = function() {
+              window.location.href = 'productDetail';  // 상품 상세 페이지로 이동하는 로직 추가
+            };
+
+            newProductCard.innerHTML = `
+                <div class="item-image">
+                    <a href="#">
+                        <img src="${product.image}" alt="${product.name}">
+                    </a>
+                    <a href="javascript:" class="good">
+                        <!-- 하트 아이콘 등 추가 가능 -->
+                    </a>
+                </div>
+                <div class="item-content">
+                    <!-- 상품 정보 및 가격 등 추가 -->
+                </div>
+            `;
+
+            // 새로운 상품 카드를 상품 목록에 추가
+            productListDiv.appendChild(newProductCard);
+          }
+
+          // 페이지 로드 시 기존에 저장된 상품 목록을 가져와서 화면에 출력
+          if (savedProducts) {
+            savedProducts.forEach(function(product) {
+              addProductToPage(product);
+            });
+          }
+        </script>
+      </li>
     </ul>
+
+
+
     <script>
       //	var loadCnt = "13";
       //	//var list_page = getCookie('best_list_page_');
@@ -244,6 +304,8 @@
       //	});
     </script>
   </div>
+
+
 
   <!--상품 등록 버튼-->
   <div class="picon">

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 // ProductService
 @Service
@@ -38,5 +39,30 @@ public class ProductService {
     public List<Product> getAllProducts() {
         // 모든 제품을 가져오는 메서드
         return productRepository.findAll();
+    }
+
+    public ProductDTO getProductDTOById(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("해당 ID의 제품을 찾을 수 없습니다: " + id));
+
+        return convertToDTO(product);
+    }
+
+    public List<ProductDTO> getAllProductsDTO() {
+        List<Product> products = productRepository.findAll();
+        return products.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    private ProductDTO convertToDTO(Product product) {
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setImageData(product.getImageData());
+        productDTO.setName(product.getName());
+        productDTO.setPrice(product.getPrice());
+        productDTO.setType(product.getType());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setAuthor(product.getAuthor());
+        return productDTO;
     }
 }
