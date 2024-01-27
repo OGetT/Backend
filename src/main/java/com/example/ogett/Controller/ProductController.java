@@ -1,15 +1,18 @@
 package com.example.ogett.Controller;
 
 import com.example.ogett.DTO.ProductDTO;
+import com.example.ogett.Entity.Product;
 import com.example.ogett.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -22,18 +25,26 @@ public class ProductController {
         this.productService = productService;
     }
 
-//    @GetMapping("/")
-//    public String showAllProducts(Model model) {
-//        // 모든 제품을 가져와서 모델에 추가
-//        List<Product> products = productService.getAllProducts();
-//        model.addAttribute("products", products);
-//        return "home";
-//    }
+/*    @GetMapping("/products")
+    public String showAllProducts(Model model) {
+        // 모든 제품을 가져와서 모델에 추가
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "home";
+    }*/
 
     @GetMapping("/product_registration")
     public String ProductRegistration() {
         return "/product/product_registration";
     }
+
+    @GetMapping("/product_detail")
+    public String productDetail() {
+        return "/product/productDetail";
+    }
+
+
+
 
 
     @PostMapping("/product_registration")
