@@ -46,51 +46,10 @@
         <!-- 상단 바 -->
         <div class="banner">
           <!-- 검색창 -->
-          <div class="search-container">
-            <input type="text" class="search-box" id="searchInput">
-            <button class="search-button" onclick="searchProducts()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1664 1664">
-                <path fill="#305440"
-                      d="M1152 704q0-185-131.5-316.5T704 256T387.5 387.5T256 704t131.5 316.5T704 1152t316.5-131.5T1152 704m512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124q-143 0-273.5-55.5t-225-150t-150-225T0 704t55.5-273.5t150-225t225-150T704 0t273.5 55.5t225 150t150 225T1408 704q0 220-124 399l343 343q37 37 37 90">
-                </path>
-              </svg>
-            </button>
-          </div>
-          <!-- 검색 스크립트 및 jQuery 추가 -->
-          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-                  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                  crossorigin="anonymous"></script>
-
-          <script>
-            function searchProducts() {
-              var searchInput = document.getElementById("searchInput");
-              var keyword = searchInput.value;
-
-              // 검색어가 있다면 서버로 전송
-              if (keyword) {
-                // Ajax를 사용하여 서버에 검색어를 전송
-                $.ajax({
-                  type: "GET",
-                  url: "/searchResult", // 검색 결과를 처리할 서버의 엔드포인트
-                  data: { keyword: keyword }, // 검색어를 서버에 전송
-                  success: function (data) {
-                    // 서버에서 받아온 데이터를 처리
-                    // 이 부분에서 받아온 데이터를 사용하여 동적으로 결과를 생성하고 표시할 수 있습니다.
-                    displaySearchResults(data);
-                  },
-                  error: function (error) {
-                    console.log("Error:", error);
-                  }
-                });
-              }
-            }
-
-            // 검색 결과를 동적으로 화면에 추가하는 함수
-            function displaySearchResults(results) {
-              // 검색 결과 페이지로 이동
-              href = "/searchResult";
-            }
-          </script>
+          <form action="/searchResult" method="get">
+            <input type="text" name="keyword" placeholder="검색어를 입력하세요">
+            <button type="submit">검색</button>
+          </form>
           <!-- 로그인, 장바구니, 하트누른 상품 -->
           <ul class="mymenu">
             <li class="l1" onclick="window.location.href='Login'">

@@ -79,6 +79,7 @@ public class ProductController {
     public String searchProducts(@RequestParam String keyword, Model model) {
         List<ProductDTO> searchResults = productService.searchProducts(keyword);
         model.addAttribute("products", searchResults);
+        model.addAttribute("keyword", keyword);
         return "SearchResult";
     }
 

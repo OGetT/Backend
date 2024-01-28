@@ -1,51 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Result</title>
     <!-- 부트스트랩 링크 추가 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy8XrmsekY9lMbe5xQF7q9R6h1MZBYsIb" crossorigin="anonymous">
+          crossorigin="anonymous">
     <!-- 추가적인 스타일링이나 스크립트 필요 시 추가 -->
 </head>
 <body>
 
+
+
 <div class="container mt-5">
-    <h2 class="mb-4">Search Result</h2>
-
-    <!-- 검색 결과를 동적으로 추가할 영역 -->
-    <div id="searchResults"></div>
-</div>
-
+        <h2 class="mb-4">Search Result</h2>
+        <div id="searchResults" class="row">
+            <!-- 검색 결과를 동적으로 추가할 영역 -->
+            <div th:each="product : ${products}" class="col-md-4 mb-4">
+                <div class="card">
+                    <img th:src="@{'data:image/png;base64,' + ${product.imageData}}" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 th:text="${product.name}" class="card-title"></h5>
+                        <p th:text="${product.description}" class="card-text"></p>
+                        <p th:text="'Price: ' + ${product.price}" class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- 검색 스크립트 추가 -->
-<script>
-    // 검색어를 받아 검색 결과를 동적으로 생성하는 함수
+<script th:inline="javascript">
+    /*<![CDATA[*/  // Thymeleaf와 함께 JavaScript 사용 시 CDATA 선언 필요
+    // 검색 결과를 동적으로 생성하는 함수
     function searchProducts() {
         var searchInput = document.getElementById("searchInput");
         var keyword = searchInput.value;
 
         // 검색어가 있다면 검색 결과를 동적으로 생성
         if (keyword) {
-            // 검색 결과 데이터
-            var products = [
-                {
-                    name: "Product A",
-                    description: "Description A",
-                    price: 100,
-                    imageData: "base64_encoded_image_data_A"
-                },
-                {
-                    name: "Product B",
-                    description: "Description B",
-                    price: 150,
-                    imageData: "base64_encoded_image_data_B"
-                },
-                // 추가적인 상품 데이터
-            ];
+            // 여기에 검색 결과를 가져오는 비동기 요청 추가 (AJAX 등)
+            // 예시로 임시 데이터 사용
+            var products = /*[[${products}]]*/ [];
 
             // 검색 결과를 동적으로 화면에 추가하는 코드
             var searchResultsContainer = document.getElementById("searchResults");
+            searchResultsContainer.innerHTML = ""; // 이전 결과를 초기화
+
             products.forEach(function (product) {
                 var card = createProductCard(product);
                 searchResultsContainer.appendChild(card);
@@ -56,23 +57,15 @@
     // 검색 결과를 카드 형식으로 생성하는 함수
     function createProductCard(product) {
         var card = document.createElement("div");
-        card.className = "card mb-3";
+        card.className = "col-md-4 mb-4";
 
-        var row = document.createElement("div");
-        row.className = "row no-gutters";
-
-        var imageCol = document.createElement("div");
-        imageCol.className = "col-md-4";
+        var innerCard = document.createElement("div");
+        innerCard.className = "card";
 
         var image = document.createElement("img");
-        image.className = "card-img";
+        image.className = "card-img-top";
         image.src = "data:image/png;base64," + product.imageData;
         image.alt = "Product Image";
-
-        imageCol.appendChild(image);
-
-        var contentCol = document.createElement("div");
-        contentCol.className = "col-md-8";
 
         var body = document.createElement("div");
         body.className = "card-body";
@@ -89,21 +82,18 @@
         price.className = "card-text";
         price.textContent = "Price: " + product.price;
 
-        // 다른 필요한 정보들을 추가
-
         body.appendChild(title);
         body.appendChild(description);
         body.appendChild(price);
 
-        contentCol.appendChild(body);
+        innerCard.appendChild(image);
+        innerCard.appendChild(body);
 
-        row.appendChild(imageCol);
-        row.appendChild(contentCol);
-
-        card.appendChild(row);
+        card.appendChild(innerCard);
 
         return card;
     }
+    /*]]>*/
 </script>
 
 </body>
