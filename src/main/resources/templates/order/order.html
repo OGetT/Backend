@@ -1,26 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>주문하기</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
+<div class="container">
+    <h2>주문하기</h2>
+    <form id="orderForm">
+        <label for="productName">제품 이름:</label>
+        <span id="productName" name="productName"></span>
 
-    <div class="container mx-auto mt-10 p-5 border rounded shadow-lg bg-white">
-        <h2 class="text-2xl font-bold mb-5">주문 내역 조회</h2>
-        <button onclick="fetchOrders()">주문 내역 조회</button>
-        <ul>
-            <!-- 주문 내역 목록 -->
-            <!-- TODO: 서버에서 동적으로 생성되는 주문 내역을 반복해서 출력해야 함 -->
-            <!-- {orders.map(order => (
-              <li key={order.id} class="flex justify-between items-center mb-3">
-                <img src={order.image} alt={order.name} style="width: 50px; height: 50px;" />
-                <span>{order.name} - {order.price}원 - {order.type} - {order.description} - 작성자: {order.author} - 상태: {order.status}</span>
-                <button onclick={() => handleCancelOrder(order.id)}>주문 취소</button>
-              </li>
-            ))} -->
-        </ul>
-    </div>
+        <label for="productPrice">가격:</label>
+        <span id="productPrice" name="productPrice"></span>
 
+        <label for="deliveryAddress">배송지 입력:</label>
+        <input type="text" id="deliveryAddress" name="deliveryAddress" required>
+
+        <label for="paymentMethod">결제 방법:</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+            <option value="creditCard">신용카드</option>
+            <option value="bankTransfer">계좌 이체</option>
+            <option value="cash">현금 결제</option>
+        </select>
+
+        <button type="button" onclick="placeOrder()">결제하기</button>
+    </form>
+</div>
+
+<script>
+    // URL에서 제품 이름과 가격 가져오기
+    var urlParams = new URLSearchParams(window.location.search);
+    var productName = urlParams.get('productName');
+    var productPrice = urlParams.get('productPrice');
+
+    // 가져온 값 Span 태그에 설정
+    document.getElementById('productName').innerText = productName;
+    document.getElementById('productPrice').innerText = productPrice;
+
+    function placeOrder() {
+        var productName = document.getElementById('productName').innerText;
+        var productPrice = document.getElementById('productPrice').innerText;
+        var deliveryAddress = document.getElementById('deliveryAddress').value;
+        var paymentMethod = document.getElementById('paymentMethod').value;
+
+        // TODO: 이후에는 위에서 가져온 값들을 이용하여 주문 처리 로직을 추가하세요.
+        // 아래는 간단한 alert로 확인하는 예시입니다.
+        alert("주문이 완료되었습니다!\n\n" +
+            "제품 이름: " + productName + "\n" +
+            "가격: " + productPrice + "\n" +
+            "배송지: " + deliveryAddress + "\n" +
+            "결제 방법: " + paymentMethod);
+    }
+</script>
 </body>
+
 </html>

@@ -86,10 +86,10 @@
             </div>
             <div class="col-md-6 product-info">
                 <!-- 제품 이름을 동적으로 표시 -->
-                <h1 class="display-5 fw-bolder" th:text="${product.name}"></h1>
+                <h1 class="display-5 fw-bolder" th:text="${product.name}" id="productName"></h1>
                 <div class="fs-5 mb-5">
                     <!-- 제품 가격을 동적으로 표시 -->
-                    <span th:text="'$' + ${product.price}"></span>
+                    <span th:text="'$' + ${product.price}" id="productPrice"></span>
                 </div>
                 <!-- 제품 설명을 동적으로 표시 -->
                 <p class="lead" th:text="${product.description}"></p>
@@ -114,9 +114,13 @@
 <!-- Core theme JS-->
 
 <script th:inline="javascript">
-    // 주문하기 버튼 클릭 시 order.html 페이지로 이동하는 함수
     function redirectToOrderPage() {
-        window.location.href = '/order';
+        // productDetail.html에서 값 가져와서 order.html로 전달
+        var productName = document.getElementById('productName').innerText;
+        var productPrice = document.getElementById('productPrice').innerText;
+
+        // order.html로 이동
+        window.location.href = '/order?productName=' + encodeURIComponent(productName) + '&productPrice=' + encodeURIComponent(productPrice);
     }
 </script>
 
