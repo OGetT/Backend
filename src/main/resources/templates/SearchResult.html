@@ -18,14 +18,17 @@
         <div id="searchResults" class="row">
             <!-- 검색 결과를 동적으로 추가할 영역 -->
             <div th:each="product : ${products}" class="col-md-4 mb-4">
-                <div class="card">
-                    <img th:src="@{'/product/' + ${product.id} + '/image'}" alt="Product Image">
-                    <div class="card-body">
-                        <h5 th:text="${product.name}" class="card-title"></h5>
-                        <p th:text="${product.description}" class="card-text"></p>
-                        <p th:text="'Price: ' + ${product.price}" class="card-text"></p>
+                <!-- 각 제품 카드를 클릭하면 productDetail 페이지로 이동 -->
+                <a th:href="@{'/product_detail?id=' + ${product.id}}" style="text-decoration: none; color: inherit;">
+                    <div class="card">
+                        <img th:src="@{'/product/' + ${product.id} + '/image'}" alt="Product Image">
+                        <div class="card-body">
+                            <h5 th:text="${product.name}" class="card-title"></h5>
+                            <p th:text="${product.description}" class="card-text"></p>
+                            <p th:text="'Price: ' + ${product.price}" class="card-text"></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
