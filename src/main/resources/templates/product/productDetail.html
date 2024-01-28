@@ -92,24 +92,25 @@
     <div class="container px-4 px-lg-5 my-5 product-container">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
-                <img class="card-img-top mb-5 mb-md-0 product-image" src="/product/{{ product.id }}/image"
-                     alt="{{ product.name }}" />
+                <!-- 이미지를 서버로부터 동적으로 가져와 표시 -->
+                <img th:src="@{'/product/' + ${product.id} + '/image'}" alt="{{ product.name }}" />
             </div>
             <div class="col-md-6 product-info">
-                <div class="small mb-1">SKU: {{ product.id }}</div>
-                <h1 class="display-5 fw-bolder">{{ product.name }}</h1>
+                <!-- 제품 이름을 동적으로 표시 -->
+                <h1 class="display-5 fw-bolder" th:text="${product.name}"></h1>
                 <div class="fs-5 mb-5">
-                    <span class="text-decoration-line-through">${{ product.price }}</span>
-                    <span>${{ product.price }}</span>
+                    <!-- 제품 가격을 동적으로 표시 -->
+                    <span th:text="'$' + ${product.price}"></span>
                 </div>
-                <p class="lead">{{ product.description }}</p>
+                <!-- 제품 설명을 동적으로 표시 -->
+                <p class="lead" th:text="${product.description}"></p>
                 <div class="d-flex">
                     <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
                            style="max-width: 3rem" />
                     <button class="btn btn-outline-dark flex-shrink-0" type="button">
                         <i class="bi-cart-fill me-1"></i> 장바구니 추가하기
                     </button>
-                    <!-- Add any other buttons or functionality as needed -->
+                    <!-- 다른 버튼이나 기능이 필요하면 추가하세요 -->
                 </div>
             </div>
         </div>

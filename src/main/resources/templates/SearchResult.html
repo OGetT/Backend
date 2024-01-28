@@ -52,6 +52,12 @@
 
             products.forEach(function (product) {
                 var card = createProductCard(product);
+
+                // 클릭 이벤트 추가
+                card.addEventListener("click", function () {
+                    showProductDetail(product.id);
+                });
+
                 searchResultsContainer.appendChild(card);
             });
         }
@@ -96,6 +102,14 @@
 
         return card;
     }
+    // 제품 상세 페이지를 표시하는 함수
+    function showProductDetail(productId) {
+        console.log("Clicked product ID: " + productId);
+
+        // 클릭한 제품의 ID를 사용하여 상세 페이지로 이동
+        window.location.href = "/product/" + productId;
+    }
+
     /*]]>*/
 </script>
 
