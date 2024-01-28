@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,6 +56,7 @@ public class ProductServiceImpl implements ProductService {
 
     private ProductDTO convertToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());  // 이 부분을 추가해주세요.
         productDTO.setImageData(product.getImageData());
         productDTO.setName(product.getName());
         productDTO.setPrice(product.getPrice());
@@ -63,6 +65,7 @@ public class ProductServiceImpl implements ProductService {
         productDTO.setAuthor(product.getAuthor());
         return productDTO;
     }
+
     public List<ProductDTO> searchProducts(String keyword) {
         // 키워드를 사용하여 상품 검색 로직을 구현
         // 예시로 상품 이름에 키워드가 포함되는 상품을 검색하도록 함
@@ -72,5 +75,10 @@ public class ProductServiceImpl implements ProductService {
         return searchResults.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+
+    public Product getProductById(Long id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        return optionalProduct.orElse(null);
     }
 }

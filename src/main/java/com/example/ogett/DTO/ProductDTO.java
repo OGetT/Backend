@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
-
+    private Long id;
     private byte[] imageData;
     private String name;
     private double price;

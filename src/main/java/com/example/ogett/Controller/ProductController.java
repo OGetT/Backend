@@ -4,9 +4,15 @@ import com.example.ogett.DTO.ProductDTO;
 import com.example.ogett.Entity.Product;
 import com.example.ogett.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -75,6 +81,7 @@ public class ProductController {
         model.addAttribute("product", product);
         return "/product/productDetail";
     }
+
     @GetMapping("/searchResult")
     public String searchProducts(@RequestParam String keyword, Model model) {
         List<ProductDTO> searchResults = productService.searchProducts(keyword);
@@ -83,10 +90,30 @@ public class ProductController {
         return "SearchResult";
     }
 
-@GetMapping("/product")
-    public  String productView(){
+    @GetMapping("/product")
+    public String productView() {
         return "/product/Product";
+    }
+
+    @GetMapping("/product/{productId}/image")
+    public ResponseEntity<Resource> getImage(@PathVariable Long productId) {
+        // productId를 사용하여 데이터베이스에서 Product 엔터티를 가져옴 (ProductService를 사용하도록 설정 필요)
+        Product product = productService.getProductById(productId);
+
+        // Product 엔터티에서 이미지 데이터 가져오기
+        byte[] imageData = product.getImageData();
+
+        // ByteArrayResource를 사용하여 이미지 데이터를 리소스로 변환
+        ByteArrayResource resource = new ByteArrayResource(imageData);
+
+        // 이미지 데이터의 Content-Type 설정
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_PNG); // 예시로 PNG 이미지로 설정
+
+        // ResponseEntity를 사용하여 이미지 데이터를 반환
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(resource);
+    }
 }
 
-
-}

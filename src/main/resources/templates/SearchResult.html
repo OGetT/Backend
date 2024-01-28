@@ -19,7 +19,7 @@
             <!-- 검색 결과를 동적으로 추가할 영역 -->
             <div th:each="product : ${products}" class="col-md-4 mb-4">
                 <div class="card">
-                    <img th:src="@{'data:image/png;base64,' + ${product.imageData}}" class="card-img-top" alt="Product Image">
+                    <img th:src="@{'/product/' + ${product.id} + '/image'}" alt="Product Image">
                     <div class="card-body">
                         <h5 th:text="${product.name}" class="card-title"></h5>
                         <p th:text="${product.description}" class="card-text"></p>
