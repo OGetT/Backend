@@ -64,18 +64,6 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">All Products</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                    </ul>
-                </li>
             </ul>
             <form class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
@@ -93,7 +81,8 @@
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
                 <!-- 이미지를 서버로부터 동적으로 가져와 표시 -->
-                <img th:src="@{'/product/' + ${product.id} + '/image'}" alt="{{ product.name }}" />
+                <img th:src="@{'/product/' + ${product.id} + '/image'}" alt="{{ product.name }}"
+                     style="max-width: 350px; max-height: 350px;" />
             </div>
             <div class="col-md-6 product-info">
                 <!-- 제품 이름을 동적으로 표시 -->
@@ -110,8 +99,8 @@
                     <button class="btn btn-outline-dark flex-shrink-0" type="button">
                         <i class="bi-cart-fill me-1"></i> 장바구니 추가하기
                     </button>
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                        주문하기
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="redirectToOrderPage()">
+                        <i class="bi-cart-fill me-1"></i> 주문하기
                     </button>
                     <!-- 다른 버튼이나 기능이 필요하면 추가하세요 -->
                 </div>
@@ -120,17 +109,17 @@
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 2024</p>
-    </div>
-</footer>
-
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<!-- <script src="js/scripts.js"></script> -->
+
+<script th:inline="javascript">
+    // 주문하기 버튼 클릭 시 order.html 페이지로 이동하는 함수
+    function redirectToOrderPage() {
+        window.location.href = '/order';
+    }
+</script>
+
 </body>
 
 </html>
