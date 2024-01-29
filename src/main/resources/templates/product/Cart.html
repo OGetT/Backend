@@ -205,6 +205,36 @@
               </tr>
             </thead>
             <tbody>
+            <!-- 장바구니 상품 목록을 동적으로 표시 -->
+            <tr th:each="cartItem : ${cartItems}">
+              <td>
+                        <span class="cs-form round">
+                            <input type="checkbox" th:id="${'cartItem_' + cartItem.id}"
+                                   th:onclick="'GoodsProc.cart_get_price(this, ' + cartItem.id + ')'"
+                                   th:checked="${cartItem.selected}" />
+                            <label th:for="${'cartItem_' + cartItem.id}">선택</label>
+                        </span>
+              </td>
+              <td>
+                <!-- 상품 정보 표시 -->
+                <div th:text="${cartItem.product.name}"></div>
+                <div th:text="${cartItem.product.description}"></div>
+              </td>
+              <td>
+                <!-- 수량 표시 -->
+                <div th:text="${cartItem.quantity}"></div>
+              </td>
+              <td>
+                <!-- 가격 표시 -->
+                <div th:text="${cartItem.product.price * cartItem.quantity}"></div>
+              </td>
+              <td>
+                <!-- 삭제 버튼 -->
+                <button type="button" class="btn-s-black"
+                        th:onclick="'MemberProc.cart_del(' + cartItem.id + ')'"
+                        th:text="삭제"></button>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
