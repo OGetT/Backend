@@ -1,233 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
     <!-- Basic -->
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- Site Metas -->
-    <!-- 검색 엔진에 사이트가 뜨는 키워드 -->
-    <meta name="keywords" content="" />
-    <!-- 사이트에 대한 간단한 설명 -->
-    <meta name="description" content="" />
-    <!-- 사이트에 대한 저자 -->
-    <meta name="author" content="" />
-    <!-- 사이트 아이콘 -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-
-    <title>GreenShop</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/GreenShop.css">
-
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" />
-
-    <!-- 스타일 파일 연결-->
-    <link href="../../static/css/style.css" rel="stylesheet" />
-    <!-- 반응형 스타일 파일 연결-->
-    <link href="../static/css/responsive.css" rel="stylesheet" />
 
     <style>
         body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             margin: 0;
         }
 
-        .hero_area {
-            height: auto;
+        .cart {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .cart {
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #007bff; /* 제목에 파란색 추가 */
+        }
+
+        .separator {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            margin: 0;
+        }
+
+        .step li {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #007bff;
             position: relative;
         }
 
-        .order-list {
-            display: flex;
-            flex-direction: column;
+        .step li:not(:last-child):after {
+            content: "";
+            width: 20px;
+            height: 2px;
+            background-color: #007bff;
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            transform: translateY(-50%);
         }
 
-        .order-list .left {
-            order: -1; /* 선택주문상품 부분을 위로 이동 */
+        .left {
+            margin-top: 20px;
+        }
+
+        .order-list {
+            margin-top: 20px;
         }
 
         .table-basic {
-            margin-top: 20px; /* 선택주문상품과의 간격 조정 */
+            width: 100%;
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
         }
 
         .btnbox.right {
-            margin-top: 20px; /* 선택주문상품과의 간격 조정 */
+            margin-top: 20px;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-s-black {
+            display: inline-block;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
         }
 
         .dash-list {
             margin-top: 20px;
+            list-style: none;
+            padding: 0;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .dash-list li span {
+            font-weight: bold;
+            color: #333;
         }
     </style>
+
 </head>
 
 <body>
-<div class="hero_area">
-    <header class="header_section">
-        <!-- 네비게이션 정의 -->
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <!-- 로고 클릭시 index로 이동 -->
-            <a class="navbar-brand" href="../index.html">
-          <span>
-            GreenShop
-          </span>
-            </a>
-            <!-- 상단 바 -->
-            <div class="banner">
-                <!-- 검색창 -->
-                <div class="search-container">
-                    <input type="text" class="search-box">
-                    <button class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                       viewBox="0 0 1664 1664">
-                        <path fill="#305440"
-                              d="M1152 704q0-185-131.5-316.5T704 256T387.5 387.5T256 704t131.5 316.5T704 1152t316.5-131.5T1152 704m512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124q-143 0-273.5-55.5t-225-150t-150-225T0 704t55.5-273.5t150-225t225-150T704 0t273.5 55.5t225 150t150 225T1408 704q0 220-124 399l343 343q37 37 37 90">
-                        </path>
-                    </svg></button>
-                </div>
-
-                <!-- 로그인, 장바구니, 하트누른 상품 -->
-                <ul class="mymenu">
-                    <li class="l1" onclick="window.location.href='Login.html'">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="35" viewBox="0 -1 24 24">
-                            <g fill="none" stroke="#305440" stroke-width="2">
-                                <circle cx="12" cy="7" r="5"></circle>
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M17 14h.352a3 3 0 0 1 2.976 2.628l.391 3.124A2 2 0 0 1 18.734 22H5.266a2 2 0 0 1-1.985-2.248l.39-3.124A3 3 0 0 1 6.649 14H7">
-                                </path>
-                            </g>
-                        </svg><strong>로그인</strong>
-                    </li>
-
-                    <li class="l2" onclick="window.location.href='Cart.html'" style="margin-left:23px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 -1 20 25">
-                            <path fill="#305440"
-                                  d="M6.505 2h11a1 1 0 0 1 .8.4l2.7 3.6v15a1 1 0 0 1-1 1h-16a1 1 0 0 1-1-1V6l2.7-3.6a1 1 0 0 1 .8-.4m12.5 6h-14v12h14zm-.5-2l-1.5-2h-10l-1.5 2zm-9.5 4v2a3 3 0 1 0 6 0v-2h2v2a5 5 0 0 1-10 0v-2z">
-                            </path>
-                        </svg>
-                        <strong>장바구니</strong></a>
-                    </li>
-
-                    <li class="l3" onclick="window.location.href='Wishlist.html'" style="margin-left:23px;"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="40" height="35" viewBox="0 0 24 24">
-                        <path fill="none" stroke="#305440" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 0 0 1.024 0C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3s-5 3-5 3s-2.239-3-5-3">
-                        </path>
-                    </svg><strong>좋아요</strong></a></li>
-
-                    <li class="l4" onclick="window.location.href='AI.html'" style="margin-left:23px;"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="40" height="35" viewBox="0 0 16 16">
-                        <path fill="#305440" fill-rule="evenodd"
-                              d="M15.5 10.071c0-2.582-1.426-4.853-3.633-6.087l1.039-1.87a.75.75 0 1 0-1.312-.728l-1.11 1.997A8.1 8.1 0 0 0 8 3a8.1 8.1 0 0 0-2.485.383l-1.11-1.997a.75.75 0 1 0-1.31.728l1.038 1.87C1.926 5.218.5 7.489.5 10.07c0 .813.169 1.603.614 2.294c.448.697 1.09 1.158 1.795 1.46C4.227 14.39 6.02 14.5 8 14.5s3.773-.11 5.09-.675c.707-.302 1.348-.763 1.796-1.46c.446-.691.614-1.481.614-2.294m-13.5 0C2 12.5 4 13 8 13s6-.5 6-2.929c0-3-2.5-5.571-6-5.571s-6 2.57-6 5.57Zm8.5 1.179a.75.75 0 0 1-.75-.75V9a.75.75 0 0 1 1.5 0v1.5a.75.75 0 0 1-.75.75m-5.75-.75a.75.75 0 0 0 1.5 0V9a.75.75 0 0 0-1.5 0z"
-                              clip-rule="evenodd"></path>
-                    </svg><strong>AI추천</strong></a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-</div>
-<!-- 메뉴 -->
-<nav id="gnb" class="bottom">
-    <ul class="menu">
-        <li class="top">
-            <a href="/shop/list.php?cate=0104">아우터</a>
-            <ul class="sub">
-                <li><a href="/shop/list.php?cate=010401">가디건/조끼</a></li>
-                <li><a href="/shop/list.php?cate=010403">야상/점퍼</a></li>
-                <li><a href="/shop/list.php?cate=010404">자켓/코트</a></li>
-                <li><a href="/shop/list.php?cate=010405">패딩</a></li>
-                <li><a href="/shop/list.php?cate=010406">플리스</a></li>
-            </ul>
-        </li>
-        <li class="top">
-            <a href="/shop/list.php?cate=0101">상의</a>
-            <ul class="sub">
-                <li><a href="/shop/list.php?cate=010102">긴팔티셔츠</a></li>
-                <li><a href="/shop/list.php?cate=010104">맨투맨</a></li>
-                <li><a href="/shop/list.php?cate=010103">후드</a></li>
-                <li><a href="/shop/list.php?cate=010101">반팔/민소매티셔츠</a></li>
-                <li><a href="/shop/list.php?cate=010105">니트</a></li>
-            </ul>
-        </li>
-        <li><a href="/shop/list.php?cate=0102">셔츠/블라우스</a></li>
-        <li><a href="/shop/list.php?cate=0105">트레이닝</a></li>
-        <li><a href="/shop/list.php?cate=0407">베이직</a></li>
-        <li><a href="/shop/list.php?cate=0103">원피스</a></li>
-        <li><a href="/shop/list.php?cate=0202">스커트</a></li>
-        <li class="top">
-            <a href="/shop/list.php?cate=0201">팬츠</a>
-            <ul class="sub">
-                <li><a href="/shop/list.php?cate=020103">청바지</a></li>
-                <li><a href="/shop/list.php?cate=020104">면바지</a></li>
-                <li><a href="/shop/list.php?cate=020106">슬랙스</a></li>
-                <li><a href="/shop/list.php?cate=020109">와이드팬츠</a></li>
-                <li><a href="/shop/list.php?cate=020101">숏팬츠</a></li>
-                <li><a href="/shop/list.php?cate=020112">조거팬츠</a></li>
-                <li><a href="/shop/list.php?cate=020115">기장별</a></li>
-            </ul>
-        </li>
-        <li class="top">
-            <a href="/shop/list.php?cate=0601">가방</a>
-            <ul class="sub">
-                <li><a href="/shop/list.php?cate=060101">백팩/스쿨백</a></li>
-                <li><a href="/shop/list.php?cate=060102">크로스/토트백</a></li>
-            </ul>
-        </li>
-        <li class="top">
-            <a href="/shop/list.php?cate=0501">신발</a>
-            <ul class="sub">
-                <li><a href="/shop/list.php?cate=050101">운동화/단화</a></li>
-                <li><a href="/shop/list.php?cate=050102">구두/워커</a></li>
-                <li><a href="/shop/list.php?cate=050103">샌들/슬리퍼/장화</a></li>
-            </ul>
-        </li>
-        <li class="top">
-            <a href="/shop/list.php?cate=0701">액세서리</a>
-            <ul class="sub">
-                <li><a href="/shop/list.php?cate=070101">주얼리</a></li>
-                <li><a href="/shop/list.php?cate=070104">패션소품</a></li>
-                <li><a href="/shop/list.php?cate=070105">양말/스타킹</a></li>
-                <li><a href="/shop/list.php?cate=070108">헤어액세서리</a></li>
-            </ul>
-        </li>
-    </ul>
-    <!-- //menu -->
-    <ul class="cateogry">
-        <li class="c3"><a href="/shop/delivery.php"></a></li>
-    </ul>
-</nav><!-- //bottom -->
 
 <!-- 장바구니 -->
 <div class="cart">
     <div class="separator"></div>
-<!--    <h2>장바구니</h2>-->
-<!--    <ul class="step">-->
-<!--        <li class="step1 on">장바구니</li>-->
-<!--        <li class="step2">주문/결제</li>-->
-<!--        <li class="step3">주문완료</li>-->
-    </ul>
-
-    <!-- 장바구니 상품 목록을 동적으로 표시하는 부분 -->
-    <div class="right">
+    <h2>장바구니</h2>
+    <div class="left">
         <div class="order-list">
-
-            <form class="goods-form"></form><!-- 삭제금지 -->
+            <form class="goods-form"></form>
             <input type="hidden" name="promotion_state" value="">
-            <!-- 카드를 표시할 영역 -->
-            <div id="productCardContainer" class="row"></div>
             <div class="table-basic">
                 <table>
+                    <colgroup>
+                        <col style="width:7%">
+                        <col style="width:56%">
+                        <col style="width:13%">
+                        <col style="width:14%">
+                        <col style="width:10%">
+                    </colgroup>
                     <thead>
                     <tr>
                         <th scope="col">
-                            <span class="cs-form round">
-                                <input type="checkbox" id="allCheck" checked=""
-                                       onclick="GoodsProc.cart_get_price_all('.cartIdxs')"><label for="allCheck">선택</label>
-                            </span>
+                  <span class="cs-form round">
+                    <input type="checkbox" id="allCheck" checked=""
+                           onclick="GoodsProc.cart_get_price_all('.cartIdxs')"><label for="allCheck">선택</label>
+                  </span>
                         </th>
                         <th scope="col">주문상품정보</th>
                         <th scope="col">수량</th>
@@ -236,15 +161,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- 장바구니 상품 목록을 동적으로 추가 -->
+                    <!-- 장바구니 상품 목록을 동적으로 표시 -->
                     <tr th:each="cartItem : ${cartItems}">
                         <td>
-                            <span class="cs-form round">
-                                <input type="checkbox" th:id="${'cartItem_' + cartItem.id}"
-                                       th:onclick="'GoodsProc.cart_get_price(this, ' + cartItem.id + ')'"
-                                       th:checked="${cartItem.selected}" />
-                                <label th:for="${'cartItem_' + cartItem.id}">선택</label>
-                            </span>
+                        <span class="cs-form round">
+                            <input type="checkbox" th:id="${'cartItem_' + cartItem.id}"
+                                   th:onclick="'GoodsProc.cart_get_price(this, ' + cartItem.id + ')'"
+                                   th:checked="${cartItem.selected}" />
+                            <label th:for="${'cartItem_' + cartItem.id}">선택</label>
+                        </span>
                         </td>
                         <td>
                             <!-- 상품 정보 표시 -->
@@ -270,21 +195,19 @@
                 </table>
             </div>
             <ul class="btnbox right">
-                <li><button type="button" class="btn-s-black" onclick="MemberProc.choose_del();"><span>선택상품 삭제</span></button>
-                </li>
-                <li><button type="button" class="btn-s-black" onclick="MemberProc.cart_all_del();"><span>전체상품 삭제</span></button></li>
+                <button type="button" class="btn-s-black" onclick="MemberProc.choose_del();"><span>선택상품 삭제</span></button>
+                <button type="button" class="btn-s-black" onclick="MemberProc.cart_all_del();"><span>전체상품 삭제</span></button>
+                <button type="button" class="btn-s-black" onclick="redirectToOrderPage();"><span>주문하기</span></button>
             </ul>
-            <ul class="btnbox right">
-                <li><button type="button" class="btn-s-black" onclick="deleteSelectedProducts();"><span>선택상품 삭제</span></button></li>
-                <li><button type="button" class="btn-s-black" onclick="purchaseSelectedProducts();"><span>선택상품 구매</span></button></li>
-            </ul>
+
             <ul class="dash-list">
-                <li><strong>장바구니, 좋아요</strong> 보관기간은 <span>1개월</span>입니다.</li>
+                <li><strong>장바구니, 좋아요</strong> 보관기간은 <span>3개월</span>입니다.</li>
+                <li>할인기간이 끝났을 경우 가격이 자동으로 정상가로 변경됩니다.</li>
             </ul>
         </div>
     </div>
 </div>
-<!-- JavaScript 코드 -->
+
 <script>
     // 선택된 상품 ID를 저장할 배열
     var selectedProductIds = [];
@@ -335,7 +258,28 @@
 
     // 장바구니 상품 목록을 표시
     displayProductCards(dummyCartItemIds);
+
+
+
+    // 주문 페이지로 이동하는 함수
+    function redirectToOrderPage() {
+        // 여기에서는 주문 페이지의 URL을 설정해주세요.
+        var orderPageUrl = "/order";
+
+        // 페이지 이동
+        window.location.href = orderPageUrl;
+    }
+
+
+
+
 </script>
+
+
 </body>
 
 </html>
+
+
+
+
